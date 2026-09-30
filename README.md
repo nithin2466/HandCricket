@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+# 🏏 Hand Cricket
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web version of the classic childhood **Hand Cricket / Finger Cricket** game — the one where you and a friend shake hands and throw out a number (1-6), and the "bowler" is trying to match the "batter's" number to get them out!
 
-## Available Scripts
+**🎮 Play it live:** https://playhandcricketeasy.netlify.app
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## How to Play
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Choose a game mode — **vs Computer** or **vs Player** (pass-and-play on one screen).
+2. Enter player name(s).
+3. **Toss** decides who bats first.
+4. Both batter and bowler pick a number from **1 to 6**.
+   - If the numbers are **different** → the number the batter picked is added to their score (runs).
+   - If the numbers **match** → the batter is **OUT**, and the innings ends.
+5. After Innings 1 ends, roles swap — the bowler now bats, chasing the first innings' score.
+6. Whoever has the higher total after both innings **wins**!
+7. Your results (wins/losses/ties, run history) are saved automatically so you can track your stats over time.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 🏏 **2-innings gameplay** with automatic batting/bowling role swap
+- 🎯 Simple, colorful **click-to-play** number buttons (no typing needed)
+- 🤖 **vs Computer** mode with randomized bowling/batting
+- 👫 **vs Player** local multiplayer (pass the device between turns)
+- ✏️ Custom player names
+- 📊 **Stats tracking** — win/loss/tie record, score history, saved in your browser (localStorage)
+- 🎨 Clean, responsive UI with smooth animations, playable on desktop and mobile
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **React** (Create React App)
+- Custom hooks for game logic (`useGameLogic`) and stats persistence (`useStats`)
+- Plain CSS (animations, gradients, responsive layout)
+- Deployed on **Netlify**, continuously deployed from this GitHub repo
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Running Locally
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+# clone the repo
+git clone https://github.com/nithin2466/HandCricket.git
+cd HandCricket
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# install dependencies
+npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# start the dev server
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Open [http://localhost:3000](http://localhost:3000) to play.
 
-## Learn More
+### Other scripts
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+| Command | Description |
+|---|---|
+| `npm start` | Runs the app in development mode |
+| `npm run build` | Builds an optimized production bundle in `/build` |
+| `npm test` | Runs the test runner |
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+src/
+  Components/
+    GameModeScreen.js     # Choose vs Computer / vs Player
+    PlayerNamesScreen.js  # Enter player names
+    TossScreen.js         # Coin toss animation
+    NumberInputButtons.js # 1-6 clickable number picker
+    ScoreBoard.js         # Live score display during play
+    ResultScreen.js       # End-of-match result & winner
+    StatsScreen.js        # Win/loss history & stats
+    Header.js
+  hooks/
+    useGameLogic.js       # Core game state machine (innings, scoring, roles)
+    useStats.js           # localStorage-backed stats tracking
+  App.js                  # Orchestrates game phases/screens
+  App.css                 # All styling
+```
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Roadmap / Ideas
 
-### Making a Progressive Web App
+- 🌐 Online multiplayer (play with friends on different devices, via Firebase real-time sync)
+- 🏆 Leaderboards / achievements
+- 📱 Installable PWA / mobile app
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## Credits
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Originally built as a Java console app using `Random`, later rebuilt as this React web app — bringing back childhood hand cricket memories, now playable by anyone with a browser. 🎉
